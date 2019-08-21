@@ -89,18 +89,17 @@ function Car(name, make) {
 }
 Car.prototype.drive = function(num) {
   if(this.hasCrashed) {
-    return this.crash()
+    return `I crashed at ${this.odometer} miles!`;
   }
+
   this.odometer += num;
   return `I have driven ${this.odometer} miles!`
 };
 Car.prototype.crash = function() {
   this.hasCrashed = true;
-  return `I crashed at ${this.odometer} miles!`
 };
 Car.prototype.repair = function() {
   this.hasCrashed = false;
-  return `Car has been repaired`
 };
 
 // const cara = new Car('Cara', 'Mercedez Benz');
@@ -150,17 +149,18 @@ function Cohort(obj) {
   this.name = obj.name;
   this.totalStudents = obj.totalStudents;
   this.noOfHired = obj.noOfHired;
-  this.hiringCompanies = [];
 }
 
+Cohort.prototype.hiringCompanies = [];
+
 Cohort.prototype.testimonials = function() {
-  let companies = this.hiringCompanies.join('');
+  let companies = this.hiringCompanies.join(', ');
   console.log(`A couple of our hiring partners are: ${companies}`)
 }
 
 Cohort.prototype.isHired = function(student) {
   this.noOfHired++;
-  this.hiringCompanies = [...this.hiringCompanies, student.jobGotten];
+  this.hiringCompanies.push(student.jobGotten);
 }
 
 Cohort.prototype.jobBot = function(student) {
@@ -192,26 +192,26 @@ const webEU3 = new Cohort({
 
 
 //Calls
-// webEU3.jobBot({
-//   name: 'Marcus Fields',
-//   hired: true,
-//   jobGotten: 'Company A'
-// });
+webEU3.jobBot({
+  name: 'Marcus Fields',
+  hired: true,
+  jobGotten: 'Company A'
+});
 
-// webEU3.jobBot({
-//   name: 'Marcus Fields',
-//   hired: true,
-//   jobGotten: 'Company B'
-// });
+webEU3.jobBot({
+  name: 'Marcus Fields',
+  hired: true,
+  jobGotten: 'Company B'
+});
 
-// webEU2.jobBot({
-//   name: 'Rebecca Allen',
-//   hired: true,
-//   jobGotten: 'FAANG'
-// });
+webEU2.jobBot({
+  name: 'Rebecca Allen',
+  hired: true,
+  jobGotten: 'FAANG'
+});
 
-// webEU2.testimonials();
-// webEU3.testimonials();
+webEU2.testimonials();
+webEU3.testimonials();
 
 
 /*
