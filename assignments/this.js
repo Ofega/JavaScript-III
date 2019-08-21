@@ -21,7 +21,7 @@ function whichObject(name) {
     console.log(`${name}: `, this);
 }
 
-whichObject(name);
+// whichObject(name);
 
 
 // Principle 2
@@ -30,7 +30,8 @@ const chioma = {
     name: 'Chioma Object',
 }
 chioma.whichObject = whichObject;
-chioma.whichObject(chioma.name);
+
+// chioma.whichObject(chioma.name);
 
 
 // Principle 3
@@ -41,7 +42,7 @@ function Person(name) {
 Person.prototype.whichObject = whichObject;
 const amaka = new Person('Amaka Object');
 
-amaka.whichObject(amaka.name);
+// amaka.whichObject(amaka.name);
 
 
 // Principle 4
@@ -57,7 +58,7 @@ const oladimeji = {
     name: 'Oladimeji Object',
 }
 
-whichObject.call(jayne, jayne.name);
-whichObject.apply(carnun, [carnun.name]);
+// whichObject.call(jayne, jayne.name);
+// whichObject.apply(carnun, [carnun.name]);
 const newBind = whichObject.bind(oladimeji);
-newBind(oladimeji.name);
+// newBind(oladimeji.name);

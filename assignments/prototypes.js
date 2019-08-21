@@ -146,6 +146,73 @@ Baby.prototype.play = function() {
 // With amazing and original capabilities. Build 3 small ones, or a very
 // complicated one with lots of state. Surprise us!
 
+function Cohort(obj) {
+  this.name = obj.name;
+  this.totalStudents = obj.totalStudents;
+  this.noOfHired = obj.noOfHired;
+  this.hiringCompanies = [];
+}
+
+Cohort.prototype.testimonials = function() {
+  let companies = this.hiringCompanies.join('');
+  console.log(`A couple of our hiring partners are: ${companies}`)
+}
+
+Cohort.prototype.isHired = function(student) {
+  this.noOfHired++;
+  this.hiringCompanies = [...this.hiringCompanies, student.jobGotten];
+}
+
+Cohort.prototype.jobBot = function(student) {
+  if (student.hired) {
+    this.isHired(student);
+
+    console.log(`${student.name} from ${this.name}, just got hired at ${student.jobGotten}, ${this.totalStudents - this.noOfHired} students remaining`);
+
+    if(this.totalStudents === this.noOfHired) {
+      console.log(`Yayy! everyone in ${this.name} got hired`);
+    }
+  } else {
+    console.log(`Hey, just passing along!`)
+  }
+}
+
+// Instances
+const webEU2 = new Cohort({
+  name: 'WEBEU2',
+  totalStudents: 100,
+  noOfHired: 99,
+});
+
+const webEU3 = new Cohort({
+  name: 'WEBEU3',
+  totalStudents: 100,
+  noOfHired: 27,
+});
+
+
+//Calls
+// webEU3.jobBot({
+//   name: 'Marcus Fields',
+//   hired: true,
+//   jobGotten: 'Company A'
+// });
+
+// webEU3.jobBot({
+//   name: 'Marcus Fields',
+//   hired: true,
+//   jobGotten: 'Company B'
+// });
+
+// webEU2.jobBot({
+//   name: 'Rebecca Allen',
+//   hired: true,
+//   jobGotten: 'FAANG'
+// });
+
+// webEU2.testimonials();
+// webEU3.testimonials();
+
 
 /*
 
