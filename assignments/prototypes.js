@@ -52,15 +52,15 @@ function Person(name, age) {
 }
 Person.prototype.greet = function() {
   return `Hello, i'm ${this.name}, and i'm ${this.age} year old.`;
-}
+};
 Person.prototype.eat = function(edible) {
   this.stomach = [...this.stomach, edible]
   return this.stomach
-}
+};
 Person.prototype.poop = function() {
   this.stomach = [];
   return this.stomach;
-}
+};
 
 // const chioma = new Person('Chioma', 22);
 // console.log(chioma.name);
@@ -93,15 +93,15 @@ Car.prototype.drive = function(num) {
   }
   this.odometer += num;
   return `I have driven ${this.odometer} miles!`
-}
+};
 Car.prototype.crash = function() {
   this.hasCrashed = true;
   return `I crashed at ${this.odometer} miles!`
-}
+};
 Car.prototype.repair = function() {
   this.hasCrashed = false;
   return `Car has been repaired`
-}
+};
 
 // const cara = new Car('Cara', 'Mercedez Benz');
 // console.log(cara.name);
@@ -120,6 +120,25 @@ Car.prototype.repair = function() {
 // - Babies of course inherit the ability to greet, which can be strange.
 // - Babies should have the ability to play, which persons don't.
 // - By playing, a string is returned with some text of your choosing.
+
+function Baby(name, age) {
+  Person.call(this, name, age);
+}
+
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function() {
+  return `Yayyy! I'm having so much fun.`
+};
+
+// const amaka = new Baby('Amaka', 2);
+// console.log(amaka.name);
+// console.log(amaka.age);
+// console.log(amaka.stomach);
+// console.log(amaka.greet());
+// console.log(amaka.play());
+// console.log(amaka.eat('Veggies'));
+// console.log(amaka.poop());
+
 
 // TASK 4
 
